@@ -30,8 +30,9 @@ Michael Witting
 
 \examples{
 
-function (formula) 
+searchByFormula("C15H12O5") 
 
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ database }
