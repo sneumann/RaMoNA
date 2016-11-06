@@ -1,0 +1,10 @@
+Package: RaMoNA
+Type: Package
+Title: What the package does (short line)
+Version: 0.1
+Date: 2016-11-06
+Author: Gert Wolgemith, Steffen Neumann, Michael Witting
+Maintainer: Steffen Neumann <sneumann@ipb-halle.de>
+Description: R interface to http://mona.fiehnlab.ucdavis.edu/
+License: LGPL
+Depends: httr

@@ -1,10 +1,3 @@
-#load required libaries
-library(httr)
-
-MONASEARCH <- "http://mona.fiehnlab.ucdavis.edu/rest/spectra/search" 
-JSONCONTENT <- '"Content-Type" = "application/json"' 
-MSPCONTENT <- '"Accept: text/msp'
-
 #search by molecular formula
 searchByFormula <- function(formula, returnType = "json") {
   
