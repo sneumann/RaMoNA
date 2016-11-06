@@ -3,6 +3,7 @@ library(httr)
 
 MONASEARCH <- "http://mona.fiehnlab.ucdavis.edu/rest/spectra/search" 
 JSONCONTENT <- '"Content-Type" = "application/json"' 
+<<<<<<< HEAD
 MSPCONTENT <- '"Accept: text/msp'
 
 #search by molecular formula
@@ -28,4 +29,6 @@ searchByFormula <- function(formula, returnType = "json") {
   return(content(req))
   
 }
+=======
+>>>>>>> 43d1c18171e16f101ce08464354273fa27cf1314
 
