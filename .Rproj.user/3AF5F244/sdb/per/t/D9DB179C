@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(httr)\n\nMONASEARCH <- \"http://mona.fiehnlab.ucdavis.edu/rest/spectra/search\"\nJSONCONTENT <- '\"Content-Type\" = \"application/json\"'\n\nreq <- POST(MONASEARCH,\n            add_headers(JSONCONTENT),\n            body = '{\"compound\":{\"metadata\":[{\"name\":\"molecule formula\",\"value\":{\"eq\":\"C47H74O12S\"}}]},\"metadata\":[{\"name\":\"compoundclass\",\"value\":{\"eq\":\"SQDG\"}}],\"tags\":[\"virtual\",\"lipidblast\"],\"offset\":0}');\n\ncat(content(req, as = \"text\"))\n\n\nquit()\n\n\n\n\n\n\n##\n## http://technistas.com/2013/04/03/working-with-json-rest-apis-from-r/\n##\n\nlibrary('RCurl')\nlibrary('rjson')\n#source(\"OAuthAccessToken.R\")\n\ngetCampaignDataframeFromJSON <- function(campaignJSON) {\n    namelist <- NULL\n    urllist <- NULL\n    statuslist <- NULL\n    datelist <- NULL\n    JSONList <- fromJSON(CampaignJSON)\n    results <- JSONList$results\n    for (i in 1:length(results)) {\n        namelist <- c(namelist, results[i][[1]]$name )\n        urllist <- c(urllist, paste(\"https://api.constantcontact.com/v2/emailmarketing/campaigns/\", results[i][[1]]$id, sep=\"\", collapse=NULL))\n        statuslist <- c(statuslist, results[i][[1]]$status)\n        datelist <- c(datelist, results[i][[1]]$modified_date)\n    }\n    campaignDF = data.frame(name=namelist,url=urllist,status=statuslist,date=datelist,stringsAsFactors=FALSE)\n    return(campaignDF)\n}\n\n\ncampaignJSON = getURL(url = paste(\"https://api.constantcontact.com/v2/emailmarketing/campaigns?\",\n                                  \"access_token=\", access_token,\n                                  \"&api_key=\", api_key, sep=\"\"))\ncampaign.dataframe <- getCampaignDataframeFromJSON(campaignJSON)\n\n\n\n##\n## https://cran.r-project.org/web/packages/jsonlite/vignettes/json-apis.html\n##\n\nlibrary(jsonlite)\nhadley_orgs <- fromJSON(\"https://api.github.com/users/hadley/orgs\")\nhadley_repos <- fromJSON(\"https://api.github.com/users/hadley/repos\")\ngg_commits <- fromJSON(\"https://api.github.com/repos/hadley/ggplot2/commits\")\ngg_issues <- fromJSON(\"https://api.github.com/repos/hadley/ggplot2/issues\")\n\n#latest issues\npaste(format(gg_issues$user$login), \":\", gg_issues$title)\n\n\n\n##\n## MoNAR\n##\n\n# http://mona.fiehnlab.ucdavis.edu/#/documentation/query\nquery <- '{\n                    \"compound\": {\n                        \"metadata\": [\n                            {\n                                \"name\": \"molecule formula\",\n                                \"value\": {\n                                    \"eq\": \"C47H74O12S\"\n                                }\n                            }\n                        ]\n                    },\n\n                    \"metadata\": [\n                        {\n                            \"name\": \"compoundclass\",\n                            \"value\": {\n                                \"eq\": \"SQDG\"\n                            }\n                        }\n                    ],\n\n                    \"tags\": [\n                        \"virtual\",\n                        \"lipidblast\"\n                    ]\n                }\n'\n\n##curl -H \"Content-Type: application/json\" -d  \n\n\n\n\n",
+    "created" : 1478445848912.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3809477193",
+    "id" : "D9DB179C",
+    "lastKnownWriteTime" : 1478445758,
+    "last_content_update" : 1478445758,
+    "path" : "C:/Users/witti/Arbeit/Scripts/R/RaMoNA/RaMoNA.R",
+    "project_path" : "RaMoNA.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

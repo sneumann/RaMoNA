@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "MONASEARCH <- \"http://mona.fiehnlab.ucdavis.edu/rest/spectra/search\" \nJSONCONTENT <- '\"Content-Type\" = \"application/json\"' \nMSPCONTENT <- '\"Accept: text/msp'\n\n",
+    "created" : 1505367782737.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3017241262",
+    "id" : "7A9BBFD6",
+    "lastKnownWriteTime" : 1478445760,
+    "last_content_update" : 1478445760,
+    "path" : "E:/Bio-Chemoinformatics/Scripts/R/RaMoNA/R/zzz.R",
+    "project_path" : "R/zzz.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
