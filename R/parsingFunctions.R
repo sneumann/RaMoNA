@@ -2,7 +2,7 @@
 getMassSpectrum <- function(entry) {
   
   #isolate spectrum and split into different lines
-  spectrum <- as.data.frame(t(as.data.frame(str_split(str_split(entry$spectrum, " ")[[1]], ":"))))
+  spectrum <- as.data.frame(t(as.data.frame(stringr::str_split(stringr::str_split(entry$spectrum, " ")[[1]], ":"))))
   
   #remove naming and label correct
   rownames(spectrum) <- NULL
@@ -33,4 +33,35 @@ getBasicEntryData <- function(entry) {
   
   #return list
   return(resultList)
+}
+
+
+createAnnotatedSpectrum2 <- function(entry) {
+  
+  # get contenct of spectrum entry
+  spectrum <- getMassSpectrum(entry)
+  basicData <- getBasicEntryData(entry)
+  
+  print(spectrum)
+  
+  print(basicData[["smiles"]])
+  
+  #create new annotated Spectrum2
+  mbRecord <- new("AnnotatedSpectrum2",
+                  merged = 0,
+                  precScanNum = as.integer(1),
+                  precursorMz = 100,
+                  precursorIntensity = 100,
+                  precursorCharge = as.integer(1),
+                  mz = unlist(spectrum$mz),
+                  intensity = unlist(spectrum$intensity),
+                  centroided = TRUE,
+                  collisionEnergy = 20,
+                  name = basicData[["name"]],
+                  formula = basicData[["formula"]],
+                  exactMass = as.numeric(basicData[["exactMass"]]),
+                  inchi = basicData[["inchi"]],
+                  smiles = as.character(basicData[["smiles"]]),
+                  splash = "")
+  
 }
